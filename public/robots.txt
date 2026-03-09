@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sbdkim.github.io/pdf_tool/sitemap.xml
