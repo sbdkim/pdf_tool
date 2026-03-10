@@ -15,14 +15,24 @@ export function WorkspaceGrid(props: {
   if (pages.length === 0) {
     return (
       <section className="panel empty-panel">
-        <h2>Drop in a couple of PDFs to begin.</h2>
-        <p>Your workspace will show thumbnails, selection tools, and export options as soon as files are loaded.</p>
+        <h2>Pages will appear here after upload.</h2>
+        <p>
+          Once files are loaded, you can inspect thumbnails, select multiple pages, change order,
+          rotate pages, and mark any page for removal before export.
+        </p>
       </section>
     );
   }
 
   return (
-    <section className="workspace-grid">
+    <section className="workspace-grid-section">
+      <div className="section-heading">
+        <div>
+          <h2>Page review</h2>
+          <p>The grid below reflects the exact order of the final export.</p>
+        </div>
+      </div>
+      <div className="workspace-grid">
       {pages.map((page, index) => (
         <PageCard
           canMoveLeft={index > 0}
@@ -38,6 +48,7 @@ export function WorkspaceGrid(props: {
           workspaceIndex={index}
         />
       ))}
+      </div>
     </section>
   );
 }

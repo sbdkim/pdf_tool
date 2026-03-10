@@ -1,30 +1,49 @@
-const liveTools = ['Merge PDFs', 'Split by range', 'Split to pages', 'Rotate pages', 'Reorder pages', 'Delete pages'];
-const plannedTools = ['Compress', 'Convert formats', 'OCR', 'Webpage to PDF', 'Watermark', 'Compare PDFs'];
+import type { ExportMode } from '../types';
 
-export function ToolStatusGrid() {
+function getExportLabel(exportMode: ExportMode): string {
+  if (exportMode === 'split-single') {
+    return 'One PDF per page';
+  }
+
+  if (exportMode === 'split-ranges') {
+    return 'ZIP of custom page ranges';
+  }
+
+  return 'One merged PDF';
+}
+
+export function ToolStatusGrid({
+  activePageCount,
+  deletedPageCount,
+  exportMode,
+  sourceCount,
+  totalPageCount
+}: {
+  activePageCount: number;
+  deletedPageCount: number;
+  exportMode: ExportMode;
+  sourceCount: number;
+  totalPageCount: number;
+}) {
   return (
-    <section className="status-grid">
-      <article className="panel">
-        <p className="eyebrow">Available now</p>
-        <h2>Core launch suite</h2>
-        <div className="chip-wrap">
-          {liveTools.map((tool) => (
-            <span className="chip chip-live" key={tool}>
-              {tool}
-            </span>
-          ))}
-        </div>
+    <section className="status-strip" aria-label="Workspace details">
+      <article className="panel status-panel">
+        <h2>Loaded workspace</h2>
+        <p>
+          {sourceCount} file{sourceCount === 1 ? '' : 's'} and {totalPageCount} total page
+          {totalPageCount === 1 ? '' : 's'} are currently in this session.
+        </p>
       </article>
-      <article className="panel">
-        <p className="eyebrow">Planned</p>
-        <h2>Next wave</h2>
-        <div className="chip-wrap">
-          {plannedTools.map((tool) => (
-            <span className="chip chip-planned" key={tool}>
-              {tool}
-            </span>
-          ))}
-        </div>
+      <article className="panel status-panel">
+        <h2>Pages ready to export</h2>
+        <p>
+          {activePageCount} active and {deletedPageCount} removed. Deleted pages stay here until
+          you restore them or reset the workspace.
+        </p>
+      </article>
+      <article className="panel status-panel">
+        <h2>Current output</h2>
+        <p>{getExportLabel(exportMode)}</p>
       </article>
     </section>
   );

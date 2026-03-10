@@ -7,6 +7,12 @@ export interface ToastMessage {
   text: string;
 }
 
+export interface WorkspaceNotice {
+  id: string;
+  tone: 'info' | 'warning';
+  text: string;
+}
+
 export function useWorkspace() {
   const [sources, setSources] = useState<PdfSource[]>([]);
   const [pages, setPages] = useState<PdfPageItem[]>([]);
@@ -14,9 +20,18 @@ export function useWorkspace() {
   const [rangeText, setRangeText] = useState('1-2');
   const [busyMessage, setBusyMessage] = useState<string | null>(null);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+  const [notices, setNotices] = useState<WorkspaceNotice[]>([]);
 
   function pushToast(text: string, tone: ToastMessage['tone']) {
     setToasts((current) => [...current, { id: crypto.randomUUID(), tone, text }]);
+  }
+
+  function pushNotice(text: string, tone: WorkspaceNotice['tone']) {
+    setNotices((current) => [{ id: crypto.randomUUID(), tone, text }, ...current].slice(0, 4));
+  }
+
+  function dismissNotice(id: string) {
+    setNotices((current) => current.filter((notice) => notice.id !== id));
   }
 
   function dismissToast(id: string) {
@@ -30,6 +45,7 @@ export function useWorkspace() {
     setRangeText('1-2');
     setBusyMessage(null);
     setToasts([]);
+    setNotices([]);
   }
 
   return {
@@ -44,8 +60,11 @@ export function useWorkspace() {
     busyMessage,
     setBusyMessage,
     toasts,
+    notices,
     pushToast,
+    pushNotice,
     dismissToast,
+    dismissNotice,
     resetWorkspace
   };
 }

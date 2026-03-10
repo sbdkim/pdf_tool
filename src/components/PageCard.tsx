@@ -34,9 +34,12 @@ export function PageCard(props: {
       onDrop={() => onDrop(page.id)}
     >
       <div className="page-card-header">
-        <span className="drag-handle" title="Drag to reorder">
-          :::
-        </span>
+        <div className="page-meta">
+          <span className="page-index">Page {workspaceIndex + 1}</span>
+          <span className="drag-handle" title="Drag to reorder">
+            Drag
+          </span>
+        </div>
         <label className="checkbox">
           <input checked={page.selected} onChange={() => onSelectToggle(page.id)} type="checkbox" />
           Select
@@ -46,24 +49,24 @@ export function PageCard(props: {
         {page.thumbnailUrl ? <img alt={`${page.sourceName} page ${page.sourcePageIndex + 1}`} src={page.thumbnailUrl} /> : <span>Preview unavailable</span>}
       </div>
       <div className="page-content">
-        <p className="page-kicker">Workspace page {workspaceIndex + 1}</p>
         <h3>{page.sourceName}</h3>
         <p>
-          Original page {page.sourcePageIndex + 1} · Rotation {page.rotation}°
+          Source page {page.sourcePageIndex + 1} · Rotation {page.rotation}°
         </p>
+        {page.deleted ? <p className="page-state">Marked for removal from export</p> : null}
       </div>
       <div className="page-actions">
         <button disabled={!canMoveLeft} onClick={() => onMove(page.id, -1)} type="button">
-          Move left
+          Move earlier
         </button>
         <button disabled={!canMoveRight} onClick={() => onMove(page.id, 1)} type="button">
-          Move right
+          Move later
         </button>
         <button onClick={() => onRotate(page.id, -90)} type="button">
-          Rotate left
+          Rotate -90°
         </button>
         <button onClick={() => onRotate(page.id, 90)} type="button">
-          Rotate right
+          Rotate +90°
         </button>
         <button onClick={() => onDeleteToggle(page.id)} type="button">
           {page.deleted ? 'Restore' : 'Delete'}

@@ -24,7 +24,10 @@
   <body>
     <div class="site-shell">
       <header class="topbar">
-        <a class="brand" href="./">PDF Foundry</a>
+        <div class="brand-block">
+          <a class="brand" href="./">PDF Foundry</a>
+          <p class="topnote">A focused browser workspace for combining, cleaning up, and exporting PDFs locally.</p>
+        </div>
         <nav class="topnav">
           <a href="./app.html">Open App</a>
           <a href="./faq.html">FAQ</a>
@@ -35,55 +38,45 @@
 
       <main>
         <section class="hero-section">
-          <div class="hero-copy hero-card">
-            <p class="eyebrow">Local-first PDF toolkit</p>
-            <h1>Fast local PDF tools with no uploads.</h1>
-            <p class="lead">
-              PDF Foundry gives you a clean browser workspace for merge, split, rotate, reorder,
-              delete, and export workflows without shipping your documents to a server.
+          <div class="hero-copy landing-card">
+            <span class="section-label">Local processing</span>
+            <h1>Fast PDF cleanup without sending files anywhere.</h1>
+            <p>
+              PDF Foundry keeps the workflow simple: add files, review pages, make edits, and
+              download the result directly from your browser.
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="./app.html">Launch Workspace</a>
               <a class="button button-secondary" href="./faq.html">How It Works</a>
             </div>
-            <ul class="hero-points">
-              <li>No uploads</li>
-              <li>Built for GitHub Pages</li>
-              <li>Focused launch suite</li>
+            <ul class="summary-list">
+              <li>Merge, split, rotate, reorder, and delete pages in one session.</li>
+              <li>Preview thumbnails before export so you can confirm page order visually.</li>
+              <li>Keep documents local from upload to download.</li>
             </ul>
           </div>
-          <aside class="hero-aside">
-            <p class="eyebrow">Launch suite</p>
-            <h2>What ships in v1</h2>
-            <div class="chip-wrap">
-              <span class="chip chip-live">Merge</span>
-              <span class="chip chip-live">Split</span>
-              <span class="chip chip-live">Rotate</span>
-              <span class="chip chip-live">Reorder</span>
-              <span class="chip chip-live">Delete</span>
-            </div>
-            <p class="muted">
-              Planned next: compression research, better presets, and heavier workflows only after
-              they meet the same reliability bar.
-            </p>
+          <aside class="hero-aside landing-card">
+            <span class="section-label">Why it feels different</span>
+            <ul class="doc-list">
+              <li>Built around a practical page-review workflow instead of a marketing-heavy shell.</li>
+              <li>Designed for quick cleanup jobs where you need confidence before download.</li>
+              <li>Focused on a smaller set of reliable PDF operations for launch.</li>
+            </ul>
           </aside>
         </section>
 
-        <section class="feature-grid">
+        <section class="feature-grid site-section">
           <article class="feature-card">
-            <p class="eyebrow">Privacy</p>
-            <h3>Everything stays local</h3>
-            <p>Your PDFs are processed directly in the browser in launch v1.</p>
+            <h2>Review-first workspace</h2>
+            <p>Upload files once, then inspect every page in the order it will export.</p>
           </article>
           <article class="feature-card">
-            <p class="eyebrow">Professional workflow</p>
-            <h3>Organize before export</h3>
-            <p>Preview pages, select in bulk, rotate, reorder, and export with cleaner filenames.</p>
+            <h2>Local by default</h2>
+            <p>Documents stay in the browser, which keeps privacy expectations straightforward.</p>
           </article>
           <article class="feature-card">
-            <p class="eyebrow">Product-ready</p>
-            <h3>More than a prototype</h3>
-            <p>Landing page, docs, roadmap, FAQ, privacy copy, and support hooks are included.</p>
+            <h2>Focused launch scope</h2>
+            <p>Core editing and export workflows ship now; larger features only follow after they are solid.</p>
           </article>
         </section>
       </main>

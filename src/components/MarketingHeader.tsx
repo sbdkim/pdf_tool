@@ -1,9 +1,12 @@
 export function MarketingHeader() {
   return (
     <header className="workspace-topbar">
-      <a className="brand" href="/">
-        PDF Foundry
-      </a>
+      <div className="brand-block">
+        <a className="brand" href="/">
+          PDF Foundry
+        </a>
+        <p>Local PDF cleanup for merge, split, reorder, rotate, and export.</p>
+      </div>
       <nav className="workspace-nav">
         <a href="/">Home</a>
         <a href="/faq.html">FAQ</a>

@@ -6,6 +6,7 @@ export function WorkspaceToolbar(props: {
   activePageCount: number;
   selectedCount: number;
   busyMessage: string | null;
+  exportError: string | null;
   onModeChange: (mode: ExportMode) => void;
   onRangeTextChange: (value: string) => void;
   onExport: () => void;
@@ -19,6 +20,7 @@ export function WorkspaceToolbar(props: {
     activePageCount,
     selectedCount,
     busyMessage,
+    exportError,
     onModeChange,
     onRangeTextChange,
     onExport,
@@ -28,36 +30,19 @@ export function WorkspaceToolbar(props: {
   } = props;
 
   return (
-    <section className="panel toolbar-panel">
-      <div className="toolbar-header">
-        <div>
-          <p className="eyebrow">Workspace controls</p>
-          <h2>Organize before export</h2>
+    <div className="toolbar-layout">
+      <section className="panel toolbar-panel">
+        <div className="section-heading">
+          <div>
+            <h2>2. Review and edit pages</h2>
+            <p>Select multiple pages for bulk actions, then fine-tune individual pages in the grid.</p>
+          </div>
+          <div className="stats-row">
+            <span>{activePageCount} active</span>
+            <span>{selectedCount} selected</span>
+          </div>
         </div>
-        <div className="stats-row">
-          <span>{activePageCount} active pages</span>
-          <span>{selectedCount} selected</span>
-        </div>
-      </div>
-      <div className="toolbar-grid">
-        <label>
-          Export mode
-          <select onChange={(event) => onModeChange(event.target.value as ExportMode)} value={exportMode}>
-            <option value="merge">Merge into one PDF</option>
-            <option value="split-single">Split into one PDF per page</option>
-            <option value="split-ranges">Split into custom ranges</option>
-          </select>
-        </label>
-        <label className={exportMode === 'split-ranges' ? '' : 'is-muted'}>
-          Page ranges
-          <input
-            disabled={exportMode !== 'split-ranges'}
-            onChange={(event) => onRangeTextChange(event.target.value)}
-            placeholder="1-3, 4-6"
-            value={rangeText}
-          />
-        </label>
-        <div className="action-row">
+        <div className="bulk-actions">
           <button className="button button-secondary" onClick={onSelectAll} type="button">
             Select all active
           </button>
@@ -70,11 +55,48 @@ export function WorkspaceToolbar(props: {
           <button className="button button-secondary" onClick={onBulkDeleteToggle} type="button">
             Toggle delete selected
           </button>
-          <button className="button button-primary" disabled={Boolean(busyMessage)} onClick={onExport} type="button">
-            {busyMessage ? 'Working...' : 'Export'}
+        </div>
+      </section>
+      <section className="panel export-panel">
+        <div className="section-heading">
+          <div>
+            <h2>3. Choose export</h2>
+            <p>Pick how the current active pages should be packaged for download.</p>
+          </div>
+        </div>
+        <div className="toolbar-grid">
+          <label>
+            Export mode
+            <select onChange={(event) => onModeChange(event.target.value as ExportMode)} value={exportMode}>
+              <option value="merge">Merge into one PDF</option>
+              <option value="split-single">One PDF per page</option>
+              <option value="split-ranges">Custom page ranges in a ZIP</option>
+            </select>
+          </label>
+          <label className={exportMode === 'split-ranges' ? '' : 'is-muted'}>
+            Page ranges
+            <input
+              disabled={exportMode !== 'split-ranges'}
+              onChange={(event) => onRangeTextChange(event.target.value)}
+              placeholder="1-3, 4-6"
+              value={rangeText}
+            />
+          </label>
+          {exportMode === 'split-ranges' ? (
+            <p className="form-hint">Use commas to separate groups. Example: 1-3, 4-6, 9-10</p>
+          ) : null}
+          {exportError ? <p className="form-error">{exportError}</p> : null}
+          {busyMessage ? <p className="form-hint">{busyMessage}</p> : null}
+          <button
+            className="button button-primary export-button"
+            disabled={Boolean(busyMessage) || Boolean(exportError)}
+            onClick={onExport}
+            type="button"
+          >
+            {busyMessage ? 'Preparing download...' : '4. Download result'}
           </button>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

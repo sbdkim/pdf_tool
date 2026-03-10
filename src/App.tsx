@@ -28,13 +28,22 @@ export default function App() {
     busyMessage,
     setBusyMessage,
     toasts,
+    notices,
     pushToast,
+    pushNotice,
     dismissToast,
+    dismissNotice,
     resetWorkspace
   } = useWorkspace();
 
   const activePages = useMemo(() => getActivePages(pages), [pages]);
   const selectedPages = useMemo(() => pages.filter((page) => page.selected), [pages]);
+  const totalPageCount = pages.length;
+  const deletedPageCount = totalPageCount - activePages.length;
+  const exportError = useMemo(
+    () => validateExportJob(exportMode, pages, rangeText),
+    [exportMode, pages, rangeText]
+  );
 
   async function handleFiles(fileList: FileList | null) {
     const selectedFiles = Array.from(fileList ?? []);
@@ -56,7 +65,7 @@ export default function App() {
         (source) => source.name === file.name.replace(/\.pdf$/i, '') && source.fileSize === file.size
       );
       if (duplicate) {
-        pushToast(`${file.name} looks like a duplicate upload. Keeping it anyway.`, 'info');
+        pushNotice(`${file.name} looks like a duplicate upload. Keeping it in the workspace.`, 'warning');
       }
 
       try {
@@ -65,7 +74,7 @@ export default function App() {
         const loaded = await pdfModule.loadPdfFile(file);
         nextSources.push(loaded.source);
         nextPages.push(...loaded.pages);
-        loaded.warnings.forEach((warning) => pushToast(warning, 'info'));
+        loaded.warnings.forEach((warning) => pushNotice(warning, 'warning'));
       } catch (error) {
         const message = error instanceof Error ? error.message : 'Unknown parsing error';
         pushToast(`${file.name} could not be loaded: ${message}`, 'error');
@@ -80,6 +89,10 @@ export default function App() {
 
     if (nextSources.length > 0) {
       trackEvent('files_added', { count: String(nextSources.length) });
+      pushNotice(
+        `${nextSources.length} file${nextSources.length === 1 ? '' : 's'} loaded with ${nextPages.length} page${nextPages.length === 1 ? '' : 's'} ready to review.`,
+        'info'
+      );
       pushToast(
         `${nextSources.length} file${nextSources.length === 1 ? '' : 's'} added to the workspace.`,
         'success'
@@ -199,12 +212,32 @@ export default function App() {
     <div className="workspace-shell">
       <MarketingHeader />
       <main className="workspace-main">
-        <HeroPanel />
-        <ToolStatusGrid />
-        <UploadPanel onClear={resetWithConfirmation} onFiles={handleFiles} />
+        <HeroPanel
+          activePageCount={activePages.length}
+          selectedCount={selectedPages.length}
+          sourceCount={sources.length}
+        />
+        <UploadPanel
+          activePageCount={activePages.length}
+          busyMessage={busyMessage}
+          notices={notices}
+          onClear={resetWithConfirmation}
+          onDismissNotice={dismissNotice}
+          onFiles={handleFiles}
+          sourceCount={sources.length}
+          totalPageCount={totalPageCount}
+        />
+        <ToolStatusGrid
+          activePageCount={activePages.length}
+          deletedPageCount={deletedPageCount}
+          exportMode={exportMode}
+          sourceCount={sources.length}
+          totalPageCount={totalPageCount}
+        />
         <WorkspaceToolbar
           activePageCount={activePages.length}
           busyMessage={busyMessage}
+          exportError={exportError}
           exportMode={exportMode}
           onBulkDeleteToggle={toggleDeleteSelected}
           onBulkRotate={rotateSelected}
