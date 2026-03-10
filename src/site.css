@@ -172,9 +172,10 @@ p {
 
 .hero-section {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.95fr);
+  grid-template-columns: minmax(0, 1.75fr) minmax(260px, 320px);
   gap: 20px;
   margin-bottom: 22px;
+  align-items: start;
 }
 
 .hero-copy,
@@ -234,6 +235,21 @@ p {
 .feature-card {
   display: grid;
   gap: 16px;
+}
+
+.hero-aside {
+  max-width: 320px;
+  justify-self: end;
+  gap: 12px;
+}
+
+.hero-aside .doc-list {
+  gap: 8px;
+}
+
+.hero-aside .doc-list li {
+  padding-top: 8px;
+  font-size: 0.96rem;
 }
 
 .feature-grid {
