@@ -1,23 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
-
 :root {
-  --bg: #f3f0ea;
-  --surface: #fbfaf7;
-  --surface-strong: #f0ece5;
-  --surface-muted: #e7e1d8;
-  --ink: #1f2320;
-  --muted: #5e645d;
-  --line: #d5cec2;
-  --line-strong: #bdb4a5;
-  --accent: #8b5a2b;
-  --accent-soft: #ebe0d0;
-  --danger-soft: #f1ded8;
-  --danger-ink: #8d3c31;
-  --success-soft: #dce8df;
-  --success-ink: #24553a;
-  --warning-soft: #f3e4cf;
-  --warning-ink: #8a5d22;
-  font-family: 'IBM Plex Sans', sans-serif;
+  --bg: var(--color-surface-base);
+  --surface: color-mix(in srgb, var(--color-surface-raised) 94%, transparent);
+  --surface-strong: var(--color-surface-sunken);
+  --surface-muted: color-mix(in srgb, var(--color-surface-sunken) 72%, white);
+  --ink: var(--color-text-primary);
+  --muted: var(--color-text-secondary);
+  --line: var(--color-border-default);
+  --line-strong: var(--color-border-strong);
+  --accent: var(--color-brand-primary);
+  --accent-soft: color-mix(in srgb, var(--color-brand-primary) 12%, white);
+  --danger-soft: color-mix(in srgb, var(--color-status-error) 10%, white);
+  --danger-ink: var(--color-status-error);
+  --success-soft: color-mix(in srgb, var(--color-status-success) 10%, white);
+  --success-ink: var(--color-status-success);
+  --warning-soft: color-mix(in srgb, var(--color-status-warning) 12%, white);
+  --warning-ink: var(--color-status-warning);
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--bg);
 }
@@ -35,6 +33,7 @@ body {
   min-width: 320px;
   color: var(--ink);
   background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0)) 0 0 / 100% 280px no-repeat,
     var(--bg);
 }
@@ -88,7 +87,8 @@ p {
 
 .brand {
   font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
   letter-spacing: -0.03em;
 }
 
@@ -126,7 +126,7 @@ p {
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-full);
   border: 1px solid var(--line-strong);
   background: var(--surface);
   color: var(--ink);
@@ -148,14 +148,14 @@ p {
 }
 
 .button-primary {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #f6f2eb;
+  background: linear-gradient(135deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 100%);
+  border-color: transparent;
+  color: var(--color-text-inverse);
 }
 
 .button-primary:hover {
-  background: #2a2f2b;
-  border-color: #2a2f2b;
+  background: linear-gradient(135deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 100%);
+  border-color: transparent;
 }
 
 .button-secondary {
@@ -274,9 +274,9 @@ p {
   min-height: 28px;
   padding: 0 10px;
   border-radius: 999px;
-  background: var(--surface-strong);
-  color: var(--muted);
-  font-family: 'IBM Plex Mono', monospace;
+  background: color-mix(in srgb, var(--color-brand-secondary) 10%, white);
+  color: var(--color-brand-secondary);
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -315,6 +315,7 @@ p {
   display: block;
   color: var(--ink);
   margin-bottom: 6px;
+  font-family: var(--font-display);
 }
 
 @media (max-width: 960px) {

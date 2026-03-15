@@ -10,7 +10,8 @@ export function HeroPanel({
   return (
     <section className="workspace-intro panel">
       <div className="workspace-intro-copy">
-        <h1>Build the exact PDF you want, locally.</h1>
+        <p className="section-label">Northline PDF</p>
+        <h1>Organize the exact PDF you want, locally.</h1>
         <p>
           Add one or more PDFs, review every page in order, make quick edits, and export the final
           result without sending documents to a server.

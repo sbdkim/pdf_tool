@@ -1,6 +1,6 @@
-# PDF Tool
+# Organize PDF Pages
 
-Privacy-first PDF toolkit with a public site and browser-based workspace for merge, split, rotate, reorder, and delete workflows.
+Local-first PDF toolkit with a public site and browser-based workspace for merge, split, rotate, reorder, and delete workflows under the Northline suite.
 
 ## Live Demo
 [https://sbdkim.github.io/pdf_tool/](https://sbdkim.github.io/pdf_tool/)
@@ -47,4 +47,4 @@ npm run build
 
 ## Privacy / Notes
 - PDF workflows run locally in the browser.
-- The project is positioned as a fuller product site than the earlier archived prototype.
+- The public product name is `Organize PDF Pages`, while the repo slug remains `pdf_tool` until the rename pass.

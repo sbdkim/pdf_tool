@@ -9,7 +9,7 @@ afterEach(() => {
 describe('App', () => {
   it('renders the workspace shell', () => {
     render(<App />);
-    expect(screen.getByRole('heading', { name: 'Build the exact PDF you want, locally.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Organize the exact PDF you want, locally.' })).toBeInTheDocument();
   });
 
   it('shows the guided empty state before upload', () => {

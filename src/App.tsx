@@ -177,7 +177,7 @@ export default function App() {
       return;
     }
 
-    const baseName = sources[0]?.name ? `${sources[0].name}-workspace` : 'pdf-foundry';
+    const baseName = sources[0]?.name ? `${sources[0].name}-workspace` : 'organize-pdf-pages';
 
     try {
       setBusyMessage('Preparing export...');
