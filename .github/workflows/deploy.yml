@@ -1,4 +1,4 @@
-name: Deploy PDF Foundry Pages
+name: Deploy Organize PDF Pages
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - run: npm ci
-      - run: PAGES_BASE=/pdf_tool/ npm run build
+      - run: PAGES_BASE=/organize-pdf-pages/ npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -12,7 +12,7 @@ export function MarketingHeader() {
         <a href="./">Home</a>
         <a href="./faq.html">FAQ</a>
         <a href="./privacy.html">Privacy</a>
-        <a href="https://github.com/sbdkim/pdf_tool/issues" rel="noreferrer" target="_blank">
+        <a href="https://github.com/sbdkim/organize-pdf-pages/issues" rel="noreferrer" target="_blank">
           Support
         </a>
       </nav>

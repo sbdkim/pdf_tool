@@ -3,7 +3,7 @@ import { configDefaults, defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: process.env.PAGES_BASE ?? '/pdf_tool/',
+  base: process.env.PAGES_BASE ?? '/organize-pdf-pages/',
   plugins: [react()],
   build: {
     rollupOptions: {
