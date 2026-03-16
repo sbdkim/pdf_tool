@@ -121,6 +121,14 @@ p {
   color: var(--ink);
 }
 
+.topnav a:focus-visible,
+.workspace-nav a:focus-visible,
+.footer-links a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 24%, white);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -138,6 +146,7 @@ p {
 .button:hover {
   background: #ffffff;
   border-color: #9f9483;
+  transform: translateY(-1px);
 }
 
 .button:disabled {
@@ -316,6 +325,16 @@ p {
   color: var(--ink);
   margin-bottom: 6px;
   font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 960px) {

@@ -46,13 +46,15 @@ export function PageCard(props: {
         </label>
       </div>
       <div className="page-preview">
-        {page.thumbnailUrl ? <img alt={`${page.sourceName} page ${page.sourcePageIndex + 1}`} src={page.thumbnailUrl} /> : <span>Preview unavailable</span>}
+        {page.thumbnailUrl ? (
+          <img alt={`${page.sourceName} page ${page.sourcePageIndex + 1}`} src={page.thumbnailUrl} />
+        ) : (
+          <span className="page-preview-empty">Preview unavailable</span>
+        )}
       </div>
       <div className="page-content">
         <h3>{page.sourceName}</h3>
-        <p>
-          Source page {page.sourcePageIndex + 1} · Rotation {page.rotation}°
-        </p>
+        <p>{`Source page ${page.sourcePageIndex + 1} · Rotation ${page.rotation}deg`}</p>
         {page.deleted ? <p className="page-state">Marked for removal from export</p> : null}
       </div>
       <div className="page-actions">
@@ -63,10 +65,10 @@ export function PageCard(props: {
           Move later
         </button>
         <button onClick={() => onRotate(page.id, -90)} type="button">
-          Rotate -90°
+          Rotate -90deg
         </button>
         <button onClick={() => onRotate(page.id, 90)} type="button">
-          Rotate +90°
+          Rotate +90deg
         </button>
         <button onClick={() => onDeleteToggle(page.id)} type="button">
           {page.deleted ? 'Restore' : 'Delete'}

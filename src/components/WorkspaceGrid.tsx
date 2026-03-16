@@ -15,6 +15,7 @@ export function WorkspaceGrid(props: {
   if (pages.length === 0) {
     return (
       <section className="panel empty-panel">
+        <p className="section-label">Page review</p>
         <h2>Pages will appear here after upload.</h2>
         <p>
           Once files are loaded, you can inspect thumbnails, select multiple pages, change order,
@@ -28,6 +29,7 @@ export function WorkspaceGrid(props: {
     <section className="workspace-grid-section">
       <div className="section-heading">
         <div>
+          <p className="section-label">Workspace grid</p>
           <h2>Page review</h2>
           <p>The grid below reflects the exact order of the final export.</p>
         </div>
