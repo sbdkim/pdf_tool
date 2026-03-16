@@ -2,18 +2,18 @@
   --bg: var(--color-surface-base);
   --surface: color-mix(in srgb, var(--color-surface-raised) 94%, transparent);
   --surface-strong: var(--color-surface-sunken);
-  --surface-muted: color-mix(in srgb, var(--color-surface-sunken) 72%, white);
+  --surface-muted: color-mix(in srgb, var(--color-surface-sunken) 72%, var(--color-surface-raised));
   --ink: var(--color-text-primary);
   --muted: var(--color-text-secondary);
   --line: var(--color-border-default);
   --line-strong: var(--color-border-strong);
   --accent: var(--color-brand-primary);
-  --accent-soft: color-mix(in srgb, var(--color-brand-primary) 12%, white);
-  --danger-soft: color-mix(in srgb, var(--color-status-error) 10%, white);
+  --accent-soft: color-mix(in srgb, var(--color-brand-primary) 12%, var(--color-surface-raised));
+  --danger-soft: color-mix(in srgb, var(--color-status-error) 10%, var(--color-surface-raised));
   --danger-ink: var(--color-status-error);
-  --success-soft: color-mix(in srgb, var(--color-status-success) 10%, white);
+  --success-soft: color-mix(in srgb, var(--color-status-success) 10%, var(--color-surface-raised));
   --success-ink: var(--color-status-success);
-  --warning-soft: color-mix(in srgb, var(--color-status-warning) 12%, white);
+  --warning-soft: color-mix(in srgb, var(--color-status-warning) 12%, var(--color-surface-raised));
   --warning-ink: var(--color-status-warning);
   font-family: var(--font-body);
   color: var(--ink);
@@ -124,7 +124,7 @@ p {
 .topnav a:focus-visible,
 .workspace-nav a:focus-visible,
 .footer-links a:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 24%, white);
+  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 26%, transparent);
   outline-offset: 4px;
   border-radius: 8px;
 }
@@ -144,8 +144,8 @@ p {
 }
 
 .button:hover {
-  background: #ffffff;
-  border-color: #9f9483;
+  background: var(--surface-muted);
+  border-color: var(--line-strong);
   transform: translateY(-1px);
 }
 
@@ -283,7 +283,7 @@ p {
   min-height: 28px;
   padding: 0 10px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--color-brand-secondary) 10%, white);
+  background: color-mix(in srgb, var(--color-brand-secondary) 10%, var(--surface));
   color: var(--color-brand-secondary);
   font-family: var(--font-mono);
   font-size: 0.75rem;

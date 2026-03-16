@@ -138,7 +138,7 @@
 .form-error {
   background: var(--danger-soft);
   color: var(--danger-ink);
-  border-color: color-mix(in srgb, var(--color-status-error) 30%, white);
+  border-color: color-mix(in srgb, var(--color-status-error) 30%, var(--surface));
 }
 
 .notice-list {
@@ -180,7 +180,7 @@
 .notice button:hover,
 .page-actions button:hover,
 .toast button:hover {
-  background: #ffffff;
+  background: var(--surface-muted);
   transform: translateY(-1px);
 }
 
@@ -227,7 +227,7 @@
   border: 1px solid var(--line-strong);
   border-radius: 10px;
   padding: 0 14px;
-  background: #fffdf9;
+  background: var(--surface);
   color: var(--ink);
 }
 
@@ -255,7 +255,7 @@
   display: grid;
   gap: 10px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 56%, transparent), transparent),
     var(--surface);
 }
 
@@ -293,8 +293,8 @@
 }
 
 .page-card.is-deleted {
-  background: #f5f2ed;
-  color: #80786f;
+  background: var(--surface-muted);
+  color: var(--muted);
 }
 
 .page-card-header,
@@ -330,7 +330,7 @@
   display: grid;
   place-items: center;
   border: 1px solid var(--line);
-  background: #f1ece4;
+  background: var(--surface-muted);
 }
 
 .page-preview img {
@@ -392,7 +392,7 @@
 .toolbar-grid input:focus-visible,
 .checkbox input:focus-visible,
 .button:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 24%, white);
+  outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 26%, transparent);
   outline-offset: 3px;
 }
 
