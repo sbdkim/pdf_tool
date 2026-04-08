@@ -41,6 +41,12 @@ npm run build
 - Pushes to `main` should trigger production deploys once the Vercel Git integration is connected.
 - Use `npm run preview` to review the built static output locally.
 
+
+## Branding / Theme Notes
+- This project uses the Northline product-family shell language for its public-facing page.
+- First visit defaults to light mode; dark mode is an explicit user choice and persists locally.
+- Shared shell decisions should stay consistent with the current Northline header/topbar, title scale, spacing, and surface model.
+
 ## Project Layout
 - `index.html` public landing page
 - `app.html` PDF workspace
