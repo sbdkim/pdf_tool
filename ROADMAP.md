@@ -3,7 +3,7 @@
 ## Now
 - Reliable local PDF core suite
 - Public product docs and launch polish
-- GitHub Pages deployment
+- Vercel deployment and branded alias rollout
 
 ## Next
 - Performance work and deeper accessibility pass

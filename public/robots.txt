@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sbdkim.github.io/organize-pdf-pages/sitemap.xml
+Sitemap: https://shinbum-organize-pdf-pages.vercel.app/sitemap.xml
