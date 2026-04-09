@@ -68,6 +68,90 @@ p {
   padding: var(--northline-shell-padding) 0 56px;
 }
 
+.hero-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.95fr);
+  gap: var(--northline-shell-gap);
+  align-items: end;
+  padding: var(--northline-shell-padding-block) var(--northline-shell-padding-inline);
+  margin-bottom: 28px;
+  border: 1px solid var(--color-border-subtle-ui);
+  border-radius: var(--northline-shell-radius);
+  background: var(--northline-shell-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: var(--font-size-xs);
+  color: var(--color-brand-secondary);
+  font-weight: var(--font-weight-bold);
+}
+
+.hero-copy-block {
+  display: grid;
+  gap: 18px;
+}
+
+.hero-copy-block h1 {
+  font-size: var(--northline-title-size);
+  line-height: 0.98;
+  max-width: var(--northline-title-max-width);
+}
+
+.hero-copy {
+  max-width: 58ch;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: var(--northline-subtitle-size);
+}
+
+.hero-note {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border-radius: calc(var(--radius-lg) + var(--space-2));
+  background: linear-gradient(180deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 100%);
+  color: var(--color-text-inverse);
+}
+
+.hero-note-head {
+  display: grid;
+  gap: 10px;
+}
+
+.hero-note-label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: color-mix(in srgb, var(--color-text-inverse) 82%, transparent);
+}
+
+.hero-nav,
+.hero-nav a {
+  color: var(--color-text-inverse);
+}
+
+.hero-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-nav a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.hero-nav a:hover,
+.hero-nav a:focus-visible {
+  border-bottom-color: color-mix(in srgb, var(--color-text-inverse) 66%, transparent);
+}
+
 .topbar,
 .workspace-topbar {
   display: flex;
@@ -175,6 +259,20 @@ p {
   background: var(--surface);
 }
 
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-brand-secondary) 10%, var(--surface));
+  color: var(--color-brand-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .panel,
 .doc-card,
 .landing-card {
@@ -183,30 +281,10 @@ p {
   border-radius: 12px;
 }
 
-.hero-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1.75fr) minmax(260px, 320px);
-  gap: 20px;
-  margin-bottom: 22px;
-  align-items: start;
-}
-
-.hero-copy,
 .hero-aside,
 .feature-card,
 .doc-card {
   padding: 24px;
-}
-
-.hero-copy {
-  display: grid;
-  gap: 18px;
-}
-
-.hero-copy h1 {
-  font-size: var(--northline-title-size);
-  line-height: 0.98;
-  max-width: var(--northline-title-max-width);
 }
 
 .hero-copy p,
@@ -244,24 +322,19 @@ p {
   line-height: 1.5;
 }
 
-.hero-aside,
 .feature-card {
   display: grid;
   gap: 16px;
 }
 
-.hero-aside {
-  max-width: 320px;
-  justify-self: end;
-  gap: 12px;
-}
-
-.hero-aside .doc-list {
+.hero-note .doc-list {
   gap: 8px;
 }
 
-.hero-aside .doc-list li {
+.hero-note .doc-list li {
   padding-top: 8px;
+  border-top-color: color-mix(in srgb, var(--color-text-inverse) 18%, transparent);
+  color: color-mix(in srgb, var(--color-text-inverse) 88%, transparent);
   font-size: 0.96rem;
 }
 
@@ -279,20 +352,6 @@ p {
 
 .site-section {
   margin-bottom: 28px;
-}
-
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 0 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--color-brand-secondary) 10%, var(--surface));
-  color: var(--color-brand-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .doc-shell {
@@ -342,7 +401,7 @@ p {
 }
 
 @media (max-width: 960px) {
-  .hero-section,
+  .hero-panel,
   .feature-grid {
     grid-template-columns: 1fr;
   }
@@ -363,5 +422,9 @@ p {
 
   .hero-actions {
     grid-template-columns: 1fr;
+  }
+
+  .hero-nav {
+    gap: 10px 14px;
   }
 }

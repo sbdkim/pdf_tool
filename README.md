@@ -45,7 +45,8 @@ npm run build
 ## Branding / Theme Notes
 - This project uses the Northline product-family shell language for its public-facing page.
 - First visit defaults to light mode; dark mode is an explicit user choice and persists locally.
-- Shared shell decisions should stay consistent with the current Northline header/topbar, title scale, spacing, and surface model.
+- Public-facing landing pages should use a single Northline `hero/header-panel` rather than a separate topbar plus hero.
+- Shared shell decisions should stay consistent with the current Northline eyebrow, `h1`, `hero-copy`, spacing, and surface model.
 
 ## Project Layout
 - `index.html` public landing page
