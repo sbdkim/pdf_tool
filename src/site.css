@@ -152,8 +152,7 @@ p {
   border-bottom-color: color-mix(in srgb, var(--color-text-inverse) 66%, transparent);
 }
 
-.topbar,
-.workspace-topbar {
+.hero-panel {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -186,8 +185,7 @@ p {
   line-height: 1.5;
 }
 
-.topnav,
-.workspace-nav,
+.hero-actions,
 .footer-links {
   display: flex;
   gap: 16px;
@@ -195,22 +193,19 @@ p {
   color: var(--muted);
 }
 
-.topnav a,
-.workspace-nav a,
+.hero-actions a,
 .footer-links a {
   padding-bottom: 3px;
   border-bottom: 1px solid transparent;
 }
 
-.topnav a:hover,
-.workspace-nav a:hover,
+.hero-actions a:hover,
 .footer-links a:hover {
   border-bottom-color: var(--line-strong);
   color: var(--ink);
 }
 
-.topnav a:focus-visible,
-.workspace-nav a:focus-visible,
+.hero-actions a:focus-visible,
 .footer-links a:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--color-brand-accent) 26%, transparent);
   outline-offset: 4px;
@@ -414,8 +409,7 @@ p {
     padding-top: 18px;
   }
 
-  .topbar,
-  .workspace-topbar,
+  .hero-panel,
   .footer {
     flex-direction: column;
   }
@@ -428,3 +422,4 @@ p {
     gap: 10px 14px;
   }
 }
+
